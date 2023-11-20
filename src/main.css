@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Ubuntu';
+  src: url('./assets/Ubuntu-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Ubuntu-light';
+  src: url('./assets/Ubuntu-Light.ttf');
+}
