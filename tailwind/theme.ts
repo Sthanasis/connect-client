@@ -6,6 +6,7 @@ const theme: Config['theme'] = {
     sans: ['Ubuntu-light', ...defaultTheme.fontFamily.sans],
   },
   spacing: {
+    0: '0px',
     px: '1px',
     xs: '2px',
     s: '4px',
