@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import Drawer from '@/Drawer.vue';
+import { DrawerContainer } from '@/drawer';
 const open = ref(false);
 const isShort = ref(true);
 const content = ref(
@@ -12,9 +12,13 @@ const content = ref(
 <template>
   <button @click="open = !open">toggle</button>
 
-  <Drawer :is-open="open" :onClose="() => (open = false)">
+  <DrawerContainer
+    class="tw-bg-stone-500"
+    :is-open="open"
+    :onClose="() => (open = false)"
+  >
     <div class="tw-h-full tw-overflow-y-auto">
-      <div v-if="isShort">
+      <div v-if="isShort" class="tw-h-[1000px]">
         this is the drwaer
         <div>
           <button @click="isShort = !isShort">toggle Content</button>
@@ -27,5 +31,5 @@ const content = ref(
         </div>
       </div>
     </div>
-  </Drawer>
+  </DrawerContainer>
 </template>
