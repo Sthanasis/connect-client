@@ -2,13 +2,9 @@
 import { computed, CSSProperties, ref, watch } from 'vue';
 
 import { useDrawerGestures, useMutationObserver } from '@drawer/composables';
-import {
-  defaultStepsHeight,
-  HEIGHT_MEASUREMENT,
-  TRANSLATE_MEASUREMENT,
-} from '@drawer/constants';
+import { defaultStepsHeight, TRANSLATE_MEASUREMENT } from '@drawer/constants';
 import { DrawerEvents } from '@drawer/constants';
-import { drawerPubSub, heightToTopOffset } from '@drawer/utilities';
+import { drawerPubSub, vhToPixels } from '@drawer/utilities';
 
 const props = withDefaults(
   defineProps<{
@@ -30,8 +26,10 @@ const isDrawerActive = ref(false),
 
 const sortedStepsHeight = computed(() => [...props.stepsHeight].sort());
 const contentHeight = ref(0);
-const biggestSortedStepHeight = computed(
-  () => sortedStepsHeight.value[sortedStepsHeight.value.length - 1]
+const biggestSortedStepHeight = computed(() =>
+  sortedStepsHeight.value[sortedStepsHeight.value.length - 1] === 100
+    ? 99.99
+    : sortedStepsHeight.value[sortedStepsHeight.value.length - 1]
 );
 
 const { observe, disconnect } = useMutationObserver(handleDrawerContentChange);
@@ -43,9 +41,13 @@ const { onDrag, onTouchStart, onTouchEnd } = useDrawerGestures(
   activeStepHeight
 );
 
-const heightClass = computed<CSSProperties>(() => ({
-  maxHeight: `${activeStepHeight.value}${HEIGHT_MEASUREMENT}`,
-}));
+const heightClass = computed<CSSProperties>(() => {
+  const height = vhToPixels(activeStepHeight.value);
+  const extraOffset = header.value?.offsetHeight ?? 0;
+  return {
+    maxHeight: `${height - extraOffset}px`,
+  };
+});
 const translateStyle = computed(
   () => `${translate.value}${TRANSLATE_MEASUREMENT}`
 );
@@ -61,10 +63,12 @@ function handleDrawerContentChange() {
     activeStepHeight.value = biggestSortedStepHeight.value;
     resolve();
   }).then(() => {
-    if (!intersection.value) return;
+    if (!intersection.value || !drawer.value || !header.value) return;
     if (!drawer.value) return;
     contentHeight.value = intersection.value.offsetTop;
-    translate.value = drawer.value.clientHeight - intersection.value.offsetTop;
+    handleTranslateChange(
+      drawer.value.clientHeight - intersection.value.offsetTop
+    );
   });
 }
 
@@ -79,11 +83,7 @@ function toggleDrawerTransition(isDragging: boolean) {
 }
 
 function handleTranslateChange(value: number) {
-  const extraOffset = header.value?.offsetHeight ?? 0;
-  translate.value =
-    value <= heightToTopOffset(contentHeight.value)
-      ? value
-      : value - extraOffset;
+  translate.value = value;
 }
 
 watch(

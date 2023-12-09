@@ -46,7 +46,7 @@ function getSwipeDownPosition(payload: {
   // 2) !nextHeight close;
   if (!nextHeightStep)
     return {
-      position: 0,
+      position: null,
       heightStep: currentStep,
     };
 

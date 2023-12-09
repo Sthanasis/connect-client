@@ -1,4 +1,4 @@
 export type SwipePosition = {
-  position: number;
+  position: number | null;
   heightStep: number;
 };

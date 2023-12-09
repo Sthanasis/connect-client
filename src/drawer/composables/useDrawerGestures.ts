@@ -54,7 +54,7 @@ export const useDrawerGestures = (
   function onTouchEnd() {
     drawerPubSub.emit(DrawerEvents.IS_DRAGGING, false);
     const { position, heightStep } = getSwipePosition();
-    if (position === 0) drawerPubSub.emit(DrawerEvents.CLOSE);
+    if (position === null) drawerPubSub.emit(DrawerEvents.CLOSE);
     else if (delta.value !== 0) {
       drawerPubSub.emit(DrawerEvents.TRANSLATE, position);
       drawerPubSub.emit(DrawerEvents.CHANGE_HEIGHT_STEP, heightStep);

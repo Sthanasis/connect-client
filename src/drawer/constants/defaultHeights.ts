@@ -1,1 +1,1 @@
-export const defaultStepsHeight = [33, 66, 95];
+export const defaultStepsHeight = [33, 66, 99.99];
