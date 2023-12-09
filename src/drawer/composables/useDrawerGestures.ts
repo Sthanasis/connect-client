@@ -16,28 +16,34 @@ export const useDrawerGestures = (
   activeStepHeight: Ref<number>
 ) => {
   const start = ref<number>(0),
-    delta = ref<number>(0);
+    delta = ref<number>(0),
+    tempHeightStep = ref<number>(0);
 
   function getSwipePosition(): SwipePosition {
     if (delta.value < 0)
       return getSwipeUpPosition({
         contentHeight: contentHeight.value,
-        currentStep: activeStepHeight.value,
+        currentStep: tempHeightStep.value,
         heightSteps: steps.value,
         translate: translate.value,
       });
     else if (delta.value > 0)
       return getSwipeDownPosition({
-        currentStep: activeStepHeight.value,
+        currentStep: tempHeightStep.value,
         heightSteps: steps.value,
         translate: translate.value,
       });
-    return { heightStep: activeStepHeight.value, position: start.value };
+    return { heightStep: tempHeightStep.value, position: start.value };
   }
 
   function onTouchStart(e: TouchEvent) {
     if (e.cancelable) e.preventDefault();
     start.value = translate.value;
+    tempHeightStep.value = activeStepHeight.value;
+    drawerPubSub.emit(
+      DrawerEvents.CHANGE_HEIGHT_STEP,
+      steps.value[steps.value.length - 1]
+    );
   }
 
   function onDrag(e: TouchEvent) {

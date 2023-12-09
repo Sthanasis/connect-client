@@ -24,12 +24,12 @@ const isDrawerActive = ref(false),
   translate = ref(0),
   activeStepHeight = ref(0);
 
-const sortedStepsHeight = computed(() => [...props.stepsHeight].sort());
+const sortedStepsHeight = computed(() =>
+  props.stepsHeight.map((step) => (step === 100 ? 99.99 : step)).sort()
+);
 const contentHeight = ref(0);
-const biggestSortedStepHeight = computed(() =>
-  sortedStepsHeight.value[sortedStepsHeight.value.length - 1] === 100
-    ? 99.99
-    : sortedStepsHeight.value[sortedStepsHeight.value.length - 1]
+const biggestSortedStepHeight = computed(
+  () => sortedStepsHeight.value[sortedStepsHeight.value.length - 1]
 );
 
 const { observe, disconnect } = useMutationObserver(handleDrawerContentChange);
@@ -59,10 +59,8 @@ function handleClose() {
 }
 
 function handleDrawerContentChange() {
-  new Promise<void>((resolve) => {
-    activeStepHeight.value = biggestSortedStepHeight.value;
-    resolve();
-  }).then(() => {
+  activeStepHeight.value = biggestSortedStepHeight.value;
+  Promise.resolve().then(() => {
     if (!intersection.value || !drawer.value || !header.value) return;
     if (!drawer.value) return;
     contentHeight.value = intersection.value.offsetTop;

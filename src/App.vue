@@ -16,15 +16,16 @@ const content = ref(
     class="tw-bg-stone-500"
     :is-open="open"
     :onClose="() => (open = false)"
+    :steps-height="[50, 100]"
   >
     <div class="tw-h-full tw-overflow-y-auto">
-      <div v-if="isShort" class="tw-h-[1000px]">
-        this is the drwaer
+      <div v-if="isShort">
+        {{ content }}
         <div>
           <button @click="isShort = !isShort">toggle Content</button>
         </div>
       </div>
-      <div v-else class="tw-h-[1000px]">
+      <div v-else>
         {{ content }}
         <div>
           <button @click="isShort = !isShort">toggle Content</button>
