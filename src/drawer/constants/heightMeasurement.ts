@@ -1,1 +1,1 @@
-export const HEIGHT_MEASUREMENT = 'vh';
+export const HEIGHT_MEASUREMENT = 'px';

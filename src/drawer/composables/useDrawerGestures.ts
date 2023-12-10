@@ -38,6 +38,7 @@ export const useDrawerGestures = (
 
   function onTouchStart(e: TouchEvent) {
     if (e.cancelable) e.preventDefault();
+    drawerPubSub.emit(DrawerEvents.IS_DRAGGING, true);
     start.value = translate.value;
     tempHeightStep.value = activeStepHeight.value;
     drawerPubSub.emit(
@@ -48,12 +49,14 @@ export const useDrawerGestures = (
 
   function onDrag(e: TouchEvent) {
     if (e.cancelable) e.preventDefault();
-    drawerPubSub.emit(DrawerEvents.IS_DRAGGING, true);
     const { clientY } = e.touches[0];
     delta.value = clientY - start.value;
-    if (clientY <= 0) return;
-    if (clientY <= heightToTopOffset(contentHeight.value)) return;
-    if (delta.value === 0) return;
+    if (
+      clientY <= 0 ||
+      clientY <= heightToTopOffset(contentHeight.value) ||
+      delta.value === 0
+    )
+      return;
     drawerPubSub.emit(DrawerEvents.TRANSLATE, clientY);
   }
 

@@ -2,7 +2,11 @@
 import { computed, CSSProperties, ref, watch } from 'vue';
 
 import { useDrawerGestures, useMutationObserver } from '@drawer/composables';
-import { defaultStepsHeight, TRANSLATE_MEASUREMENT } from '@drawer/constants';
+import {
+  defaultStepsHeight,
+  HEIGHT_MEASUREMENT,
+  TRANSLATE_MEASUREMENT,
+} from '@drawer/constants';
 import { DrawerEvents } from '@drawer/constants';
 import { drawerPubSub, vhToPixels } from '@drawer/utilities';
 
@@ -45,7 +49,7 @@ const heightClass = computed<CSSProperties>(() => {
   const height = vhToPixels(activeStepHeight.value);
   const extraOffset = header.value?.offsetHeight ?? 0;
   return {
-    maxHeight: `${height - extraOffset}px`,
+    maxHeight: `${height - extraOffset}${HEIGHT_MEASUREMENT}`,
   };
 });
 const translateStyle = computed(
@@ -64,9 +68,7 @@ function handleDrawerContentChange() {
     if (!intersection.value || !drawer.value || !header.value) return;
     if (!drawer.value) return;
     contentHeight.value = intersection.value.offsetTop;
-    handleTranslateChange(
-      drawer.value.clientHeight - intersection.value.offsetTop
-    );
+    setTranslate(drawer.value.clientHeight - intersection.value.offsetTop);
   });
 }
 
@@ -80,7 +82,7 @@ function toggleDrawerTransition(isDragging: boolean) {
     : drawer.value?.classList.add('drawer-transition');
 }
 
-function handleTranslateChange(value: number) {
+function setTranslate(value: number) {
   translate.value = value;
 }
 
@@ -94,7 +96,7 @@ watch(
     }
     drawerPubSub.on(DrawerEvents.CLOSE, handleClose);
     drawerPubSub.on(DrawerEvents.IS_DRAGGING, toggleDrawerTransition);
-    drawerPubSub.on(DrawerEvents.TRANSLATE, handleTranslateChange);
+    drawerPubSub.on(DrawerEvents.TRANSLATE, setTranslate);
     drawerPubSub.on(
       DrawerEvents.CHANGE_HEIGHT_STEP,
       (val) => (activeStepHeight.value = val)
