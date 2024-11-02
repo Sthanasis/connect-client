@@ -2,18 +2,16 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { routeConfig } from '../configs/routes';
 export default function Navbar() {
   const pathname = usePathname();
-  const routeConfig = [
-    { name: 'Home', href: '/' },
-    { name: 'About', href: '/about' },
-  ];
+
   return (
     <div className="w-full flex px-4 justify-start gap-8 shadow-sm border-b sticky top-0 bg-snow-white">
       <Link className="p-4 cursor-pointer" href="/">
         ESHOP
       </Link>
-      <ul className="flex">
+      <ul className="md:flex hidden sm:visible">
         {routeConfig.map((route) => (
           <li className="flex" key={route.href}>
             <Link
