@@ -46,7 +46,7 @@ const Button = ({
     filled: 'bg-slate-gray hover:bg-slate-500',
     outlined:
       'border-slate-gray border-opacity-50 hover:bg-smokey-gray focus:bg-slate-gray',
-    text: 'hover:bg-slate-gray focus:bg-slate-gray disabled:hover:bg-transparent disabled:cursor-default',
+    text: 'hover:bg-slate-gray hover:bg-opacity-level-10 focus:bg-slate-gray focus:bg-opacity-level-50 disabled:hover:bg-transparent disabled:cursor-default',
   };
 
   const buttonStyle = {
@@ -66,7 +66,7 @@ const Button = ({
         baseClasses,
         variantClasses[variant],
         buttonStyle[color],
-        rounded ? 'rounded-full p-2' : 'px-3 py-1 rounded-[4px]',
+        rounded ? 'rounded-full p-2' : 'px-3 py-1',
       ].join(' ')}
       type={type}
       disabled={disabled}

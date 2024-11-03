@@ -1,17 +1,11 @@
-'use client';
-
 import { useState, MouseEvent } from 'react';
 import { useDebounceListCleanup } from '@/shared/hooks/useDebounceListCleanup';
 
 interface RippleProps {
-  disabled?: boolean;
   colorClasses?: string;
 }
 
-const Ripple = ({
-  disabled = false,
-  colorClasses = 'bg-snow-white',
-}: RippleProps) => {
+const Ripple = ({ colorClasses = 'bg-snow-white' }: RippleProps) => {
   const ANIMATION_DURATION = 700;
   const [rippleList, setRippleList] = useState<
     { x: number; y: number; size: number }[]
@@ -22,9 +16,6 @@ const Ripple = ({
   });
 
   const addRipple = (event: MouseEvent<HTMLDivElement>) => {
-    if (disabled) {
-      return;
-    }
     const container = event.currentTarget.getBoundingClientRect();
     const size = Math.max(container.width, container.height);
     const x = event.pageX - container.x - size / 2;
