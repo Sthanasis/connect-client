@@ -27,19 +27,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased grid grid-rows-[auto_1fr_auto] items-center justify-items-center min-h-screen font-[family-name:var(--font-geist-sans)] overflow-auto`}
       >
-        <div className="grid grid-rows-[auto_1fr_auto] items-center justify-items-center min-h-screen gap-16 font-[family-name:var(--font-geist-sans)]">
-          <header className="w-full">
-            <Navbar />
-          </header>
-          <main className="flex flex-col p-4 gap-8 row-start-2 items-center sm:items-start">
-            {children}
-          </main>
-          <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-            Footer Content
-          </footer>
-        </div>
+        <header className="w-full sticky top-0">
+          <Navbar />
+        </header>
+        <main className="flex flex-col p-4 gap-8 row-start-2 items-center sm:items-start">
+          {children}
+        </main>
+        <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
+          Footer Content
+        </footer>
       </body>
     </html>
   );
