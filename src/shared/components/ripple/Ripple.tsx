@@ -1,5 +1,7 @@
+'use client';
+
 import { useState, MouseEvent } from 'react';
-import { useDebounceListCleanup } from './useDebounceListCleanup';
+import { useDebounceListCleanup } from '@/shared/hooks/useDebounceListCleanup';
 
 interface RippleProps {
   disabled?: boolean;

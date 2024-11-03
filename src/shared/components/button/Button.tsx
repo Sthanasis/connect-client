@@ -1,9 +1,8 @@
-'use client';
-
 import { MouseEvent, ReactNode } from 'react';
-import { ButtonVariant } from './buttonVariant';
-import { ButtonColor } from './buttonColor';
-import Ripple from '../ripple/Ripple';
+import { ButtonVariant } from '@/shared/types/buttonVariant';
+import { ButtonColor } from '@/shared/types/buttonColor';
+import Ripple from '@/shared/components/ripple/Ripple';
+
 interface ButtonProps {
   variant?: ButtonVariant;
   children: ReactNode;
