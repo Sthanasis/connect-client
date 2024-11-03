@@ -5,9 +5,13 @@ export default function Home() {
     <div className="items-center justify-items-center font-[family-name:var(--font-geist-sans)]">
       Home page
       <div className="flex flex-col gap-3">
-        <Button variant="outlined">{'test'}</Button>
-        <Button variant="filled">{'test'}</Button>
-        <Button variant="text">{'test'}</Button>
+        <Button color="primary" variant="outlined">
+          {'TEST'}
+        </Button>
+        <Button color="primary" variant="filled">
+          {'TEST'}
+        </Button>
+        <Button color="primary">{'TEST'}</Button>
       </div>
     </div>
   );

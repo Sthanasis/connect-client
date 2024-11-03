@@ -5,7 +5,7 @@ import { ButtonVariant } from './buttonVariant';
 import { ButtonColor } from './buttonColor';
 import Ripple from '../ripple/Ripple';
 interface ButtonProps {
-  variant: ButtonVariant;
+  variant?: ButtonVariant;
   children: ReactNode;
   type?: 'button' | 'submit';
   color?: ButtonColor;
@@ -17,7 +17,7 @@ interface ButtonProps {
 
 const Button = ({
   children,
-  variant,
+  variant = 'text',
   type = 'button',
   color = 'default',
   rounded = false,
@@ -26,21 +26,21 @@ const Button = ({
   onClick,
 }: ButtonProps) => {
   const baseClasses =
-    'cursor-pointer overflow-hidden flex items-center relative outline-none duration-200 disabled:text-gray-400';
+    'cursor-pointer overflow-hidden flex items-center relative outline-none duration-200 disabled:text-gray-400 outline-offset-0';
 
   const variantClasses = {
     filled:
       'hover:bg-opacity-level-80 focus:bg-opacity-level-80 text-snow-white',
     outlined:
-      'border border-solid border-slate-gray hover:bg-opacity-level-10 focus:bg-opacity-level-10 hover:border-opacity-100  focus:border-opacity-100 ',
-    text: 'hover:bg-opacity-level-10 focus:bg-opacity-level-10',
+      'border border-solid hover:bg-opacity-level-10 focus:bg-opacity-level-10 hover:border-opacity-100 focus:border-opacity-100',
+    text: '',
   };
 
   const primaryClasses = {
-    filled: 'bg-primary text-white',
+    filled: 'bg-primary text-snow-white',
     outlined:
-      'text-primary  border-primary border-opacity-50 hover:bg-primary focus:bg-primary',
-    text: 'text-primary hover:bg-primary focus:outline-2',
+      'text-primary border-primary border-opacity-40 hover:bg-primary focus:bg-primary',
+    text: 'text-primary hover:bg-primary hover:bg-opacity-level-10',
   };
 
   const defaultClasses = {
