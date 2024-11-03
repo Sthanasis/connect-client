@@ -10,6 +10,7 @@ interface ButtonProps {
   color?: ButtonColor;
   rounded?: boolean;
   disabled?: boolean;
+  full?: boolean;
   disableRipple?: boolean;
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
 }
@@ -21,6 +22,7 @@ const Button = ({
   color = 'default',
   rounded = false,
   disabled,
+  full = false,
   disableRipple = false,
   onClick,
 }: ButtonProps) => {
@@ -67,6 +69,7 @@ const Button = ({
         variantClasses[variant],
         buttonStyle[color],
         rounded ? 'rounded-full p-2' : 'px-3 py-1',
+        full ? 'w-full' : '',
       ].join(' ')}
       type={type}
       disabled={disabled}
