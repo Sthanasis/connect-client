@@ -7,7 +7,6 @@ export async function apiRequest<T>(
   try {
     return { data: await fn(), error: undefined };
   } catch (err: unknown) {
-    console.log(err);
     return { error: { message: (err as ApiError).message } };
   }
 }

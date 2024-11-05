@@ -1,3 +1,4 @@
+'use client';
 import { MouseEvent, ReactNode } from 'react';
 import { ButtonVariant } from '@/shared/types/buttonVariant';
 import { ButtonColor } from '@/shared/types/buttonColor';
@@ -27,7 +28,7 @@ const Button = ({
   onClick,
 }: ButtonProps) => {
   const baseClasses =
-    'cursor-pointer overflow-hidden flex items-center relative outline-none duration-200 disabled:text-gray-400 outline-offset-0';
+    'cursor-pointer rounded-lg overflow-hidden flex items-center justify-center relative outline-none duration-200 disabled:text-gray-400 outline-offset-0';
 
   const variantClasses = {
     filled:
@@ -68,7 +69,7 @@ const Button = ({
         baseClasses,
         variantClasses[variant],
         buttonStyle[color],
-        rounded ? 'rounded-full p-2' : 'px-3 py-1',
+        rounded ? 'rounded-full p-4' : 'px-4 py-2',
         full ? 'w-full' : '',
       ].join(' ')}
       type={type}

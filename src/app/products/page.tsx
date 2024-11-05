@@ -1,6 +1,7 @@
 import productService from '@/features/products/api';
+import ProductCardList from '@/features/products/components/ProductCardList';
 
 export default async function Products() {
-  const result = await productService.fetchAllProducts();
-  return <div>Products Page {JSON.stringify(result.data)}</div>;
+  const products = await productService.fetchAllProducts();
+  return <ProductCardList products={products} />;
 }

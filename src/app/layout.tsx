@@ -32,7 +32,7 @@ export default function RootLayout({
         <header className="w-full sticky top-0">
           <Navbar />
         </header>
-        <main className="flex flex-col p-4 gap-8 row-start-2 items-center sm:items-start">
+        <main className="flex flex-col p-4 gap-8 row-start-2 items-center sm:items-start w-full h-full">
           {children}
         </main>
         <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
