@@ -4,6 +4,7 @@ import Image from 'next/image';
 interface ProductProps {
   name: string;
   images: string[];
+  description: string;
   price: number;
   category: string;
   rating: number;
@@ -15,16 +16,18 @@ const ProductCard = ({
   name,
   price,
   rating,
+  images,
   reviewsCount,
+  description,
 }: ProductProps) => {
   return (
     <section
-      className="rounded-md flex flex-col overflow-hidden bg-snow-white"
+      className="rounded-md flex flex-col overflow-hidden bg-snow-white text-dark-steel"
       role="button"
     >
       <div className="max-h-[200px]">
         <Image
-          src="https://i.pinimg.com/564x/c1/1d/16/c11d164de692594acf53c9a855093139.jpg"
+          src={images[0]}
           width={200}
           height={100}
           style={{ width: 'auto', height: 'auto' }}
@@ -36,11 +39,12 @@ const ProductCard = ({
       <div className="p-3 flex flex-col justify-between w-full bg-snow-white">
         <h2 className="font-bold text-xl">{name}</h2>
         <div className="flex flex-col gap-2">
+          <p>{description}</p>
           <span className="font-serif text-lg text-primary">{price} $</span>
           <div className="flex items-center gap-2">
-            <div className="bg-[url(/empty_star.svg)] bg-[0_50%] bg-repeat-x bg-[length:20px] h-4 w-[100px]">
+            <div className="bg-[url(/empty_star.svg)] bg-[0_50%] bg-repeat-x bg-[length:20%] h-full w-[100px]">
               <div
-                className="bg-[url(/filled_star.svg)] bg-[0_50%] bg-repeat-x bg-[length:20px] h-4"
+                className="bg-[url(/filled_star.svg)] bg-[0_50%] bg-repeat-x bg-[length:20%] h-full"
                 style={{ width: rating }}
               />
             </div>

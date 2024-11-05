@@ -4,4 +4,7 @@ export type ProductResponse = {
   price: number;
   category: string;
   images: string[];
+  description: string;
+  rating: number;
+  reviewsCount: number;
 };
