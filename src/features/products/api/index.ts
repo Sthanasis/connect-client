@@ -1,11 +1,12 @@
 import { BASE_API } from '@/shared/constants/baseApi';
 import { PRODUCT_ENDPOINTS } from '../constants/productEndpoints';
-import { ApiResult } from '@/shared/types/apiResult';
 import { ProductResponse } from '../types/productResponse';
+import { appFetch } from '@/shared/utilities/appFetch';
 
-async function fetchAllProducts(): Promise<ApiResult<ProductResponse[]>> {
-  const response = await fetch(`${BASE_API}/${PRODUCT_ENDPOINTS.products}`);
-  return await response.json();
+async function fetchAllProducts() {
+  return await appFetch<ProductResponse[]>(
+    `${BASE_API}/${PRODUCT_ENDPOINTS.products}/`
+  );
 }
 
 const productService = { fetchAllProducts };

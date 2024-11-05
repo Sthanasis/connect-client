@@ -1,6 +1,6 @@
 import { useRouter, usePathname } from 'next/navigation';
 import { MouseEvent, ReactNode } from 'react';
-
+import Link from 'next/link';
 interface AppLinkProps {
   children: ReactNode | JSX.Element | string;
   href: string;
@@ -22,15 +22,16 @@ export default function AppLink({
   };
 
   return (
-    <a
+    <Link
       href={href}
       className={`p-4 transition-colors duration-100 cursor-pointer w-full sm:w-auto ${
         isActive ? 'bg-slate-600 text-snow-white' : ''
       }`}
       onTransitionEnd={onTransitionEnd}
       onClick={handleClick}
+      prefetch
     >
       {children}
-    </a>
+    </Link>
   );
 }
