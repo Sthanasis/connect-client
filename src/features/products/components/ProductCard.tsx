@@ -42,10 +42,15 @@ const ProductCard = ({
           <p>{description}</p>
           <span className="font-serif text-lg text-primary">{price} $</span>
           <div className="flex items-center gap-2">
-            <div className="bg-[url(/empty_star.svg)] bg-[0_50%] bg-repeat-x bg-[length:20%] h-full w-[100px]">
+            <div className="flex bg-[url(/empty_star.svg)] bg-[0%_50%] bg-repeat-x bg-[length:20px] h-full w-[100px]">
               <div
-                className="bg-[url(/filled_star.svg)] bg-[0_50%] bg-repeat-x bg-[length:20%] h-full"
-                style={{ width: rating }}
+                className="bg-[url(/filled_star.svg)] h-full"
+                style={{
+                  width: `${rating}%`,
+                  backgroundSize: 'inherit',
+                  backgroundRepeat: 'inherit',
+                  backgroundPosition: 'inherit',
+                }}
               />
             </div>
             <span className='before:content-["("] after:content-[")"] text-neutral-text'>

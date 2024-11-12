@@ -7,4 +7,5 @@ export type ProductResponse = {
   description: string;
   rating: number;
   reviewsCount: number;
+  ratingPercentage: number;
 };

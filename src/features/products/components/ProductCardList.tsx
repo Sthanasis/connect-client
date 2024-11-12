@@ -13,7 +13,7 @@ const ProductCardList = ({ products }: { products: ProductResponse[] }) => {
             images={product.images}
             name={product.name}
             price={product.price}
-            rating={product.rating}
+            rating={product.ratingPercentage}
             reviewsCount={product.reviewsCount}
             description={product.description}
           />
