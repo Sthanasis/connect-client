@@ -1,5 +1,7 @@
+import { AppRoutes } from '@/shared/constants/appRoutes';
+
 export const routeConfig = [
-  { name: 'Home', href: '/' },
-  { name: 'About', href: '/about' },
-  { name: 'Products', href: '/products' },
+  { name: 'Home', href: AppRoutes.Home },
+  { name: 'About', href: AppRoutes.About },
+  { name: 'Products', href: AppRoutes.Products },
 ];

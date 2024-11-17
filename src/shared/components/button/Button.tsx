@@ -12,6 +12,7 @@ interface ButtonProps {
   rounded?: boolean;
   disabled?: boolean;
   full?: boolean;
+  ariaLabel?: string;
   disableRipple?: boolean;
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
 }
@@ -23,6 +24,7 @@ const Button = ({
   color = 'default',
   rounded = false,
   disabled,
+  ariaLabel,
   full = false,
   disableRipple = false,
   onClick,
@@ -73,6 +75,7 @@ const Button = ({
         full ? 'w-full' : '',
       ].join(' ')}
       type={type}
+      aria-label={ariaLabel}
       disabled={disabled}
       onClick={onClick}
     >

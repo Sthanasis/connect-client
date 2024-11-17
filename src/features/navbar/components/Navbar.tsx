@@ -32,7 +32,11 @@ export default function Navbar() {
           ))}
         </ul>
         <div className="flex sm:hidden">
-          <Button variant="text" onClick={() => setIsOpen(!isOpen)}>
+          <Button
+            variant="text"
+            ariaLabel="Mobile Menu Button"
+            onClick={() => setIsOpen(!isOpen)}
+          >
             <FontAwesomeIcon icon={faBars} size="xl" />
           </Button>
         </div>

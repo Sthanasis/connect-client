@@ -14,6 +14,11 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: '**.pinimg.com',
       },
+      {
+        protocol: 'https',
+
+        hostname: 'www.coolclub.gr',
+      },
     ],
   },
 };

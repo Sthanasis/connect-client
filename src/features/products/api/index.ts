@@ -9,6 +9,12 @@ async function fetchAllProducts() {
   );
 }
 
-const productService = { fetchAllProducts };
+async function fetchProductById(productId: string) {
+  return await appFetch<ProductResponse>(
+    `${BASE_API}/${PRODUCT_ENDPOINTS.productId(productId)}`
+  );
+}
+
+const productService = { fetchAllProducts, fetchProductById };
 
 export default productService;
