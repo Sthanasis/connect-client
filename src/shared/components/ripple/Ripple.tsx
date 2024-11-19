@@ -18,8 +18,8 @@ const Ripple = ({ colorClasses = 'bg-snow-white' }: RippleProps) => {
   const addRipple = (event: MouseEvent<HTMLDivElement>) => {
     const container = event.currentTarget.getBoundingClientRect();
     const size = Math.max(container.width, container.height);
-    const x = event.pageX - container.x - size / 2;
-    const y = event.pageY - container.y - size / 2;
+    const x = event.clientX - container.x - size / 2;
+    const y = event.clientY - container.y - size / 2;
     const newRipple = {
       x,
       y,

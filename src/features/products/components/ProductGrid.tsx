@@ -9,9 +9,9 @@ export default function ProductGrid({
 }) {
   return (
     <section className="w-full h-full">
-      <div className="max-w-[1000px] flex gap-8 mx-auto">
-        <div className="w-1/2">{images}</div>
-        <div className="w-1/2">{info}</div>
+      <div className="max-w-[1000px] flex-col flex md:flex-row gap-8 mx-auto">
+        <div className="md:w-1/2">{images}</div>
+        <div className="md:w-1/2">{info}</div>
       </div>
     </section>
   );
