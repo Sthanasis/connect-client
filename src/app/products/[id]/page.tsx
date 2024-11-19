@@ -1,4 +1,5 @@
 import productService from '@/features/products/api';
+import ProductGrid from '@/features/products/components/ProductGrid';
 import ProductImageList from '@/features/products/components/ProductImageList';
 import ProductInfo from '@/features/products/components/ProductInfo';
 
@@ -11,16 +12,21 @@ export default async function Page({
   const product = await productService.fetchProductById(id);
 
   return (
-    <section>
-      <ProductImageList
-        images={product.images.map((img, i) => ({ id: i, url: img }))}
-      />
-      <ProductInfo
-        category={product.category}
-        description={product.description}
-        price={product.price + '$'}
-        title={product.name}
-      />
-    </section>
+    <ProductGrid
+      images={
+        <ProductImageList
+          images={product.images.map((img, i) => ({ id: i, url: img }))}
+        />
+      }
+      info={
+        <ProductInfo
+          category={product.category}
+          description={product.description}
+          price={product.price + ' $'}
+          title={product.name}
+          rating={product.ratingPercentage}
+        />
+      }
+    ></ProductGrid>
   );
 }

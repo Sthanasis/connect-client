@@ -13,12 +13,12 @@ const ProductImageList = ({ images }: ProductImagesListProps) => {
   const [image, setImage] = useState(images[0]);
 
   return (
-    <div className="flex-col flex md:flex-row gap-1">
+    <div className="flex-col flex md:flex-row gap-4 pt-8">
       <div className="flex md:flex-col gap-1">
         {images.map((img) => (
           <button
             className={[
-              'border',
+              'border p-1 rounded-sm',
               img.id === image.id ? 'border-dark-steel' : '',
             ].join(' ')}
             key={img.id}
@@ -29,18 +29,20 @@ const ProductImageList = ({ images }: ProductImagesListProps) => {
               src={img.url}
               width={40}
               height={40}
-              style={{ width: 'auto', height: 'auto' }}
+              style={{ width: 40, height: 40 }}
             />
           </button>
         ))}
       </div>
-      <div className="h-96 w-96 relative border">
+
+      <div className="border w-full h-full">
         <Image
           priority
           alt="main image"
           src={image.url}
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          width={300}
+          height={400}
+          style={{ height: 'auto', width: '100%' }}
         />
       </div>
     </div>

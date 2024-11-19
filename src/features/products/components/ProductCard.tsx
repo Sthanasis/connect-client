@@ -1,5 +1,6 @@
 import Button from '@/shared/components/button/Button';
 import Image from 'next/image';
+import ProductReview from './ProductReview';
 
 interface ProductProps {
   name: string;
@@ -42,17 +43,7 @@ const ProductCard = ({
           <p>{description}</p>
           <span className="font-serif text-lg text-primary">{price} $</span>
           <div className="flex items-center gap-2">
-            <div className="flex bg-[url(/empty_star.svg)] bg-[0%_50%] bg-repeat-x bg-[length:20px] h-full w-[100px]">
-              <div
-                className="bg-[url(/filled_star.svg)] h-full"
-                style={{
-                  width: `${rating}%`,
-                  backgroundSize: 'inherit',
-                  backgroundRepeat: 'inherit',
-                  backgroundPosition: 'inherit',
-                }}
-              />
-            </div>
+            <ProductReview totalPercentage={rating} />
             <span className='before:content-["("] after:content-[")"] text-neutral-text'>
               {reviewsCount}
             </span>
