@@ -1,5 +1,9 @@
+'use client';
+
 import Button from '@/shared/components/button/Button';
 import ProductReview from './ProductReview';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 interface ProductInfoProps {
   category: string;
@@ -32,9 +36,14 @@ export default function ProductInfo({
         <h3 className="font-bold text-xl">{price}</h3>
         <span>Delivered on</span>
         <span className="font-bold">Transfer fee</span>
-        <Button full variant="filled" color="primary">
-          ADD TO CART
-        </Button>
+        <div className="flex gap-2">
+          <Button full variant="filled" color="primary">
+            ADD TO CART
+          </Button>
+          <Button variant="outlined">
+            <FontAwesomeIcon icon={faHeart} />
+          </Button>
+        </div>
       </div>
     </section>
   );

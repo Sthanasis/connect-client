@@ -1,3 +1,5 @@
+'use client';
+
 import Button from '@/shared/components/button/Button';
 import Image from 'next/image';
 import ProductReview from './ProductReview';
@@ -49,7 +51,11 @@ const ProductCard = ({
             </span>
           </div>
 
-          <Button variant="filled" color="primary">
+          <Button
+            variant="filled"
+            color="primary"
+            onClick={(e) => e.preventDefault()}
+          >
             ADD TO CART
           </Button>
         </div>
