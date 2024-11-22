@@ -21,8 +21,8 @@ export default function Navbar() {
   }, []);
 
   return (
-    <>
-      <div className="w-full flex px-4 justify-between sm:justify-start gap-8 shadow-sm border-b sticky top-0 bg-snow-white">
+    <nav>
+      <div className="w-full flex px-4 justify-between sm:justify-start gap-8 shadow-sm border-b top-0 bg-snow-white">
         <div className="p-4 cursor-default">MY APP</div>
         <ul className="sm:flex hidden sm:visible">
           {routeConfig.map((route) => (
@@ -34,6 +34,7 @@ export default function Navbar() {
         <div className="flex sm:hidden">
           <Button
             variant="text"
+            rounded
             ariaLabel="Mobile Menu Button"
             onClick={() => setIsOpen(!isOpen)}
           >
@@ -67,6 +68,6 @@ export default function Navbar() {
           </div>,
           document.querySelector('body')!
         )}
-    </>
+    </nav>
   );
 }

@@ -2,7 +2,7 @@
 
 import Button from '@/shared/components/button/Button';
 import Image from 'next/image';
-import ProductReview from './ProductReview';
+import ProductReviewStars from './reviews/ProductReviewStars';
 
 interface ProductProps {
   name: string;
@@ -25,11 +25,12 @@ const ProductCard = ({
 }: ProductProps) => {
   return (
     <section
-      className="rounded-md flex flex-col overflow-hidden bg-snow-white text-dark-steel"
+      className="rounded-md flex flex-col overflow-hidden bg-snow-white text-dark-steel w-full md:w-auto"
       role="button"
     >
       <div className="max-h-[200px]">
         <Image
+          className="m-auto"
           src={images[0]}
           width={200}
           height={100}
@@ -45,7 +46,7 @@ const ProductCard = ({
           <p>{description}</p>
           <span className="font-serif text-lg text-primary">{price} $</span>
           <div className="flex items-center gap-2">
-            <ProductReview totalPercentage={rating} />
+            <ProductReviewStars totalPercentage={rating} />
             <span className='before:content-["("] after:content-[")"] text-neutral-text'>
               {reviewsCount}
             </span>

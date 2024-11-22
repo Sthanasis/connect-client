@@ -8,4 +8,5 @@ export const appTheme = {
   'dark-steel': '#33394c',
   'soft-brown': '#F2EBE3',
   'neutral-text': '#707070',
+  'soft-gray': '#F8F8F8',
 };

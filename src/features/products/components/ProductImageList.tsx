@@ -18,7 +18,7 @@ const ProductImageList = ({ images }: ProductImagesListProps) => {
         {images.map((img) => (
           <button
             className={[
-              'border p-1 rounded-sm',
+              'border p-1 rounded-sm relative w-10 h-10',
               img.id === image.id ? 'border-dark-steel' : '',
             ].join(' ')}
             key={img.id}
@@ -27,9 +27,8 @@ const ProductImageList = ({ images }: ProductImagesListProps) => {
             <Image
               alt="main image"
               src={img.url}
-              width={40}
-              height={40}
-              style={{ width: 40, height: 40 }}
+              fill
+              style={{ objectFit: 'contain' }}
             />
           </button>
         ))}

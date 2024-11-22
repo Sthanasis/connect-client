@@ -30,7 +30,7 @@ const Button = ({
   onClick,
 }: ButtonProps) => {
   const baseClasses =
-    'cursor-pointer rounded-lg overflow-hidden flex items-center justify-center relative outline-none duration-200 disabled:text-gray-400 outline-offset-0';
+    'cursor-pointer overflow-hidden flex items-center justify-center relative z-0 outline-none duration-200 disabled:text-gray-400 outline-offset-0';
 
   const variantClasses = {
     filled:
@@ -71,7 +71,7 @@ const Button = ({
         baseClasses,
         variantClasses[variant],
         buttonStyle[color],
-        rounded ? 'rounded-full p-4' : 'px-4 py-2',
+        rounded ? 'rounded-full p-4' : 'rounded-lg px-4 py-2',
         full ? 'w-full' : '',
       ].join(' ')}
       type={type}

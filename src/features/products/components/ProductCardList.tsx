@@ -9,7 +9,7 @@ const ProductCardList = ({ products }: { products: ProductResponse[] }) => (
     <div className="flex gap-4 flex-wrap justify-center sm:justify-normal">
       {products.map((product) => (
         <Link
-          className="flex"
+          className="flex w-full"
           key={product.id}
           href={AppRoutes.ProductId(product.id)}
         >

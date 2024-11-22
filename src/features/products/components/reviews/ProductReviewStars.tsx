@@ -1,4 +1,4 @@
-export default function ProductReview({
+export default function ProductReviewStars({
   totalPercentage,
 }: {
   totalPercentage: number;
