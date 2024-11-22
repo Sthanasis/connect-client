@@ -16,7 +16,7 @@ export default function ProductReviewListHeader({
   return (
     <>
       <h2 className="text-2xl font-bold mb-4">Reviews</h2>
-      <div className="flex mb-8 gap-4">
+      <div className="flex flex-col md:flex-row items-center mb-8 gap-4">
         <div className="flex flex-col justify-center items-center gap-s w-fit">
           <span className="font-bold">{total}</span>
           <div className="h-10">
@@ -28,10 +28,7 @@ export default function ProductReviewListHeader({
         </div>
         <div className="flex flex-col justify-between">
           {Array.from(reviewsMap || []).map(([review, config]) => (
-            <div
-              key={review}
-              className="flex justify-between gap-2 items-center"
-            >
+            <div key={review} className="flex gap-2 items-center">
               <span className="text-neutral-text min-w-3">{review}</span>
               <span className="text-neutral-text">stars</span>
               <div className="w-40">
