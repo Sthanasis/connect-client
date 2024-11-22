@@ -1,6 +1,5 @@
 'use client';
 
-import { routeConfig } from '../configs/routes';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from '@/shared/components/button/Button';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
@@ -8,7 +7,12 @@ import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import AppLink from './AppLink';
 
-export default function Navbar() {
+interface NavbarProps {
+  title: string;
+  routeConfig: { name: string; href: string }[];
+}
+
+export default function Navbar({ title, routeConfig }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [docEnv, setDocEnv] = useState(false);
 
@@ -23,7 +27,7 @@ export default function Navbar() {
   return (
     <nav>
       <div className="w-full flex px-4 justify-between sm:justify-start gap-8 shadow-sm border-b top-0 bg-snow-white">
-        <div className="p-4 cursor-default">MY APP</div>
+        <div className="p-4 cursor-default">{title}</div>
         <ul className="sm:flex hidden sm:visible">
           {routeConfig.map((route) => (
             <li key={route.href} className="flex w-full">

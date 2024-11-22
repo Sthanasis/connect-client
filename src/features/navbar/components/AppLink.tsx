@@ -1,4 +1,4 @@
-import { useRouter, usePathname } from 'next/navigation';
+import { useRouter, usePathname, useParams } from 'next/navigation';
 import { MouseEvent, ReactNode } from 'react';
 import Link from 'next/link';
 interface AppLinkProps {
@@ -13,8 +13,12 @@ export default function AppLink({
   onTransitionEnd,
 }: AppLinkProps) {
   const router = useRouter();
-  const isActive = usePathname() === href;
-
+  const params = useParams();
+  let pathname = usePathname();
+  const { lang } = params;
+  if (lang) pathname = pathname.replace(`${lang}`, '');
+  const isActive = pathname === href;
+  console.log(pathname);
   const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     if (isActive) return;
@@ -24,7 +28,7 @@ export default function AppLink({
   return (
     <Link
       href={href}
-      className={`p-4 transition-colors duration-100 cursor-pointer w-full sm:w-auto ${
+      className={`p-4 transition-colors duration-100 cursor-pointer w-full sm:w-auto whitespace-nowrap ${
         isActive ? 'bg-slate-600 text-snow-white' : ''
       }`}
       onTransitionEnd={onTransitionEnd}
