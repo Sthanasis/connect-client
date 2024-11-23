@@ -16,9 +16,14 @@ export default function AppLink({
   const params = useParams();
   let pathname = usePathname();
   const { lang } = params;
-  if (lang) pathname = pathname.replace(`${lang}`, '');
+  if (lang)
+    pathname =
+      pathname === `/${lang}`
+        ? pathname.replace(`${lang}`, '')
+        : pathname.replace(`/${lang}`, '');
+
   const isActive = pathname === href;
-  console.log(pathname);
+
   const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     if (isActive) return;

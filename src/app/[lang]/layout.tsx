@@ -38,7 +38,7 @@ export default async function RootLayout({
   const routeConfig = createRouteConfig({
     home: dict.nav.home,
     about: dict.nav.about,
-    products: dict.nav.about,
+    products: dict.nav.products,
   });
   return (
     <html lang={lang}>
